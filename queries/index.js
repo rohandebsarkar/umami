@@ -22,6 +22,7 @@ import { getPageviews } from './analytics/pageview/getPageviews';
 import { getPageviewStats } from './analytics/pageview/getPageviewStats';
 import { savePageView } from './analytics/pageview/savePageView';
 import { createSession } from './analytics/session/createSession';
+import { endSession } from './analytics/session/endSession';
 import { getSessionByUuid } from './analytics/session/getSessionByUuid';
 import { getSessionMetrics } from './analytics/session/getSessionMetrics';
 import { getSessions } from './analytics/session/getSessions';
@@ -54,6 +55,7 @@ export {
   getPageviewStats,
   savePageView,
   createSession,
+  endSession,
   getSessionByUuid,
   getSessionMetrics,
   getSessions,

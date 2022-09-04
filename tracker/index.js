@@ -113,6 +113,14 @@
       }),
     );
 
+  const trackSessionEnd = (uuid = website) =>
+    collect(
+      'sessionend',
+      assign(getPayload(), {
+        website: uuid,
+      }),
+    );
+
   /* Handle events */
 
   const addEvents = node => {
@@ -211,9 +219,15 @@
           observeDocument();
         }
       }
+
+      if (document.visibilityState === 'hidden') {
+        trackSessionEnd();
+      }
     };
 
-    document.addEventListener('readystatechange', update, true);
+    ['readystatechange', 'visibilitychange', 'pagehide'].forEach(event =>
+      document.addEventListener(event, update, true),
+    );
 
     update();
   }

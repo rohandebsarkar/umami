@@ -2,7 +2,7 @@ const { Resolver } = require('dns').promises;
 import isbot from 'isbot';
 import ipaddr from 'ipaddr.js';
 import { createToken, unauthorized, send, badRequest, forbidden } from 'next-basics';
-import { savePageView, saveEvent } from 'queries';
+import { savePageView, saveEvent, endSession } from 'queries';
 import { useCors, useSession } from 'lib/middleware';
 import { getJsonBody, getIpAddress } from 'lib/request';
 import { secret, uuid } from 'lib/crypto';
@@ -83,6 +83,8 @@ export default async (req, res) => {
       event_name,
       event_data,
     });
+  } else if (type == 'sessionend') {
+    await endSession(session_uuid);
   } else {
     return badRequest(res);
   }

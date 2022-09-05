@@ -1,7 +1,7 @@
 import { CLICKHOUSE, PRISMA, runQuery } from 'lib/db';
 // import kafka from 'lib/kafka';
 import prisma from 'lib/prisma';
-// import redis from 'lib/redis';
+import redis from 'lib/redis';
 
 export async function endSession(...args) {
   return runQuery({

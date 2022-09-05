@@ -220,16 +220,18 @@
           observeDocument();
         }
       }
-
-      if (document.visibilityState === 'hidden') {
-        console.log(document.visibilityState);
-        trackSessionEnd();
-      }
     };
 
-    ['readystatechange', 'visibilitychange'].forEach(event =>
-      document.addEventListener(event, update, true),
-    );
+    document.addEventListener('readystatechange', update, true),
+      document.addEventListener(
+        'visibilitychange',
+        () => {
+          if (document.visibilityState === 'hidden') {
+            trackSessionEnd();
+          }
+        },
+        { once: true },
+      );
 
     update();
   }

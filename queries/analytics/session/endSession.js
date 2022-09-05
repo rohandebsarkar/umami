@@ -17,9 +17,7 @@ async function relationalQuery(session_id) {
         session_id
       },
       data: {
-        update: {
-          ended_at: new Date(),
-        },
+        ended_at: new Date(),
       },
     })
     .then(async res => {

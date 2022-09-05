@@ -1,7 +1,7 @@
 import { CLICKHOUSE, PRISMA, runQuery } from 'lib/db';
 // import kafka from 'lib/kafka';
 import prisma from 'lib/prisma';
-import redis from 'lib/redis';
+// import redis from 'lib/redis';
 
 export async function endSession(...args) {
   return runQuery({
@@ -10,14 +10,16 @@ export async function endSession(...args) {
   });
 }
 
-async function relationalQuery(session_uuid) {
+async function relationalQuery(session_id) {
   return prisma.client.session
     .update({
       where: {
-        session_uuid: session_uuid,
+        id: session_id
       },
       data: {
-        ended_at: Date.now(),
+        update: {
+          ended_at: new Date(),
+        },
       },
     })
     .then(async res => {

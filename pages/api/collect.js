@@ -84,7 +84,7 @@ export default async (req, res) => {
       event_data,
     });
   } else if (type == 'sessionend') {
-    await endSession(session_uuid);
+    await endSession(session_id);
   } else {
     return badRequest(res);
   }

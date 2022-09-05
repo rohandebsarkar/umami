@@ -221,6 +221,7 @@
       }
 
       if (document.visibilityState === 'hidden') {
+        console.log(document.visibilityState);
         trackSessionEnd();
       }
     };

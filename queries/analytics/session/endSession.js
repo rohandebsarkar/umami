@@ -14,7 +14,7 @@ async function relationalQuery(session_id) {
   return prisma.client.session
     .update({
       where: {
-        id: session_id
+        session_id
       },
       data: {
         update: {

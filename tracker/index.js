@@ -227,7 +227,7 @@
       }
     };
 
-    ['readystatechange', 'visibilitychange', 'pagehide'].forEach(event =>
+    ['readystatechange', 'visibilitychange'].forEach(event =>
       document.addEventListener(event, update, true),
     );
 
